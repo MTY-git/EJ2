@@ -17,15 +17,13 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.recycler.adapter = Adapter(locations){
-
-            fun showMap(geoLocation: Uri) {
+                location->
                 val intent = Intent(Intent.ACTION_VIEW).apply {
-                    data = geoLocation
+                    data =  Uri.parse(location.coordinates)
                 }
                 if (intent.resolveActivity(packageManager) != null) {
                     startActivity(intent)
                 }
-            }
         }
 
     }
@@ -33,9 +31,9 @@ class MainActivity : AppCompatActivity() {
 
     private val locations =
         listOf(
-            Location("Caribe" , "https://loremflickr.com/320/240/caribe", ""),
-            Location("Sevilla" , "https://loremflickr.com/320/240/seville" , ""),
-            Location("Islandia" , "https://loremflickr.com/320/240/iceland" , ""),
+            Location("Caribe" , "https://loremflickr.com/320/240/caribe", "geo:47.6,-122.3"),
+            Location("Sevilla" , "https://loremflickr.com/320/240/seville" , "geo:47.6,-122.3"),
+            Location("Islandia" , "https://loremflickr.com/320/240/iceland" , "geo:47.6,-122.3"),
             Location("Alaska" , "https://loremflickr.com/320/240/alaska" , ""),
             Location("Paris" , "https://loremflickr.com/320/240/paris" , ""),
             Location("Berlin" , "https://loremflickr.com/320/240/berlin" , ""),
